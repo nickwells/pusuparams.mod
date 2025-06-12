@@ -6,7 +6,7 @@ require (
 	github.com/nickwells/check.mod/v2 v2.1.22
 	github.com/nickwells/filecheck.mod v1.2.7
 	github.com/nickwells/param.mod/v6 v6.4.1
-	github.com/nickwells/pusu.mod v0.0.3
+	github.com/nickwells/pusu.mod v0.1.0
 	github.com/nickwells/testhelper.mod/v2 v2.4.1
 )
 
