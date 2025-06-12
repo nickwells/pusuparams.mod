@@ -21,7 +21,8 @@ func (s TopicSetter) CountChecks() int {
 	return len(s.Checks)
 }
 
-// SetWithVal (called with the value following the parameter) checks the .
+// SetWithVal (called with the value following the parameter) checks the
+// topic is valid and that it passes any extra checks that have been set.
 func (s TopicSetter) SetWithVal(_ string, paramVal string) error {
 	topic := pusu.Topic(paramVal)
 
@@ -48,7 +49,7 @@ func (s TopicSetter) AllowedValues() string {
 // ValDescribe returns a string describing the value that can follow the
 // parameter
 func (s TopicSetter) ValDescribe() string {
-	return "topic"
+	return "Topic"
 }
 
 // CurrentValue returns the current setting of the parameter value
