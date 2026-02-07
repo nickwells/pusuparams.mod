@@ -5,8 +5,8 @@ import (
 
 	"github.com/nickwells/check.mod/v2/check"
 	"github.com/nickwells/filecheck.mod/filecheck"
-	"github.com/nickwells/param.mod/v6/param"
-	"github.com/nickwells/param.mod/v6/psetter"
+	"github.com/nickwells/param.mod/v7/param"
+	"github.com/nickwells/param.mod/v7/psetter"
 	"github.com/nickwells/pusu.mod/pusu"
 	"github.com/nickwells/pusu.mod/pusuclt"
 )
@@ -37,8 +37,8 @@ func AddPusuParams(ci *pusuclt.ConnInfo, groupName string) param.PSetOptFunc {
 	}
 
 	return func(ps *param.PSet) error {
-		mustBeSet := []param.OptFunc{param.Attrs(param.MustBeSet)}
-		dontShow := []param.OptFunc{param.Attrs(param.DontShowInStdUsage)}
+		mustBeSet := []param.ByNameOptFunc{param.Attrs(param.MustBeSet)}
+		dontShow := []param.ByNameOptFunc{param.Attrs(param.DontShowInStdUsage)}
 
 		if groupName != "" {
 			ps.AddGroup(groupName, groupNameDesc)
@@ -95,7 +95,7 @@ func AddCertInfoParams(ci *pusu.CertInfo, groupName string) param.PSetOptFunc {
 	}
 
 	return func(ps *param.PSet) error {
-		mustBeSet := []param.OptFunc{param.Attrs(param.MustBeSet)}
+		mustBeSet := []param.ByNameOptFunc{param.Attrs(param.MustBeSet)}
 
 		if groupName != "" {
 			ps.AddGroup(groupName, groupNameDesc)

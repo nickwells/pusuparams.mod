@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nickwells/param.mod/v6/param"
-	"github.com/nickwells/param.mod/v6/paramset"
+	"github.com/nickwells/errutil.mod/errutil"
+	"github.com/nickwells/param.mod/v7/paramset"
 	"github.com/nickwells/pusu.mod/pusuclt"
 	"github.com/nickwells/pusuparams.mod/pusuparams"
 	"github.com/nickwells/testhelper.mod/v2/testhelper"
@@ -49,7 +49,7 @@ func TestAddPusuParams(t *testing.T) {
 		testhelper.ID
 		params        []string
 		expCCISetters []cciSetter
-		expErrMap     param.ErrMap
+		expErrMap     errutil.ErrMap
 	}{
 		{
 			ID: testhelper.MkID("set address"),
@@ -82,7 +82,7 @@ func TestAddPusuParams(t *testing.T) {
 		},
 		{
 			ID: testhelper.MkID("missing address"),
-			expErrMap: param.ErrMap{
+			expErrMap: errutil.ErrMap{
 				"pubsub-server-address": []error{
 					errors.New("this parameter must be set somewhere"),
 				},
@@ -99,10 +99,12 @@ func TestAddPusuParams(t *testing.T) {
 
 			targetCCI := pusuclt.NewConnInfo(nil)
 
-			ps := paramset.NewNoHelpNoExitNoErrRptOrPanic(
+			ps := paramset.NewNoHelpNoExitNoErrRpt(
 				pusuparams.AddPusuParams(targetCCI, ""))
 
-			errMap := ps.Parse(tc.params)
+			ps.Parse(tc.params)
+
+			errMap := ps.Errors()
 			if err := testhelper.DiffVals(errMap, tc.expErrMap); err != nil {
 				t.Log(tc.IDStr())
 				t.Logf("\t%s", err)

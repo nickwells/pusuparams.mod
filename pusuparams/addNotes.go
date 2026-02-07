@@ -1,7 +1,7 @@
 package pusuparams
 
 import (
-	"github.com/nickwells/param.mod/v6/param"
+	"github.com/nickwells/param.mod/v7/param"
 	"github.com/nickwells/pusu.mod/pusu"
 )
 
