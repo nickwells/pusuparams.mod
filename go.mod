@@ -6,7 +6,7 @@ require (
 	github.com/nickwells/check.mod/v2 v2.1.29
 	github.com/nickwells/errutil.mod v1.2.24
 	github.com/nickwells/filecheck.mod v1.2.13
-	github.com/nickwells/param.mod/v7 v7.2.2
+	github.com/nickwells/param.mod/v7 v7.2.3
 	github.com/nickwells/pusu.mod v0.1.5
 	github.com/nickwells/testhelper.mod/v2 v2.6.1
 )
@@ -22,8 +22,8 @@ require (
 	github.com/nickwells/tempus.mod v1.2.11 // indirect
 	github.com/nickwells/twrap.mod v1.5.14 // indirect
 	github.com/nickwells/xdg.mod v1.0.12 // indirect
-	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
-	golang.org/x/sys v0.43.0 // indirect
-	golang.org/x/term v0.42.0 // indirect
+	golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/term v0.43.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 )
