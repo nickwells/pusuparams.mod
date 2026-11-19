@@ -9,7 +9,7 @@ import (
 	"github.com/nickwells/param.mod/v7/paramset"
 	"github.com/nickwells/pusu.mod/pusuclt"
 	"github.com/nickwells/pusuparams.mod/pusuparams"
-	"github.com/nickwells/testhelper.mod/v2/testhelper"
+	"github.com/nickwells/testhelper.mod/v3/testhelper"
 )
 
 type cciSetter func(*pusuclt.ConnInfo)
@@ -105,17 +105,14 @@ func TestAddPusuParams(t *testing.T) {
 			ps.Parse(tc.params)
 
 			errMap := ps.Errors()
-			if err := testhelper.DiffVals(errMap, tc.expErrMap); err != nil {
-				t.Log(tc.IDStr())
-				t.Logf("\t%s", err)
-				t.Error("\terror maps differ\n")
-			}
 
-			if err := testhelper.DiffVals(targetCCI, expectedCCI); err != nil {
-				t.Log(tc.IDStr())
-				t.Logf("\t%s", err)
-				t.Error("\tpost-parsing values differ\n")
-			}
+			testhelper.DiffAnyVal(t,
+				tc.IDStr(), "error maps",
+				errMap, tc.expErrMap)
+
+			testhelper.DiffAnyVal(t,
+				tc.IDStr(), "post parsing value",
+				targetCCI, expectedCCI)
 		})
 	}
 }
